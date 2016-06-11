@@ -35,6 +35,10 @@ public class SortingHandler {
 
     private Date date;
 
+
+    // View options
+    public boolean hideUnsortedFiles = false;
+
     public SortingHandler(XmlData xmlData) {
         this.xmlData = xmlData;
 
@@ -56,8 +60,10 @@ public class SortingHandler {
 
         for (File file : new File(xmlData.getUnsortedDir()).listFiles()) {
             FileOperation o = new FileOperation(file.getName(), getDestination(file.getName()), new Date(file.lastModified()));
-            fileList.add(o);
             checkIfDisabled(o);
+            if (!hideUnsortedFiles || (hideUnsortedFiles && !o.isDisabled())) {
+                fileList.add(o);
+            }
         }
     }
 

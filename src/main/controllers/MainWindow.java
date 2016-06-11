@@ -1,6 +1,7 @@
 package main.controllers;
 
 import com.sun.org.apache.xpath.internal.operations.String;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -26,6 +27,7 @@ public class MainWindow implements Initializable {
     @FXML private TableColumn colSortedDirectory;
     @FXML private CheckBox cbDateFilter;
     @FXML private DatePicker dpDateFilter;
+    @FXML private CheckMenuItem cbHideUnmovedFiles;
 
 
     public XmlHandler xmlHandler;
@@ -75,6 +77,7 @@ public class MainWindow implements Initializable {
                         else
                             setStyle("");
                     }
+
                 }
             };
         });
@@ -87,7 +90,6 @@ public class MainWindow implements Initializable {
         );
 
         dpDateFilter.setValue(LocalDate.now());
-
         onDateFilterChanged();
     }
 
@@ -132,6 +134,11 @@ public class MainWindow implements Initializable {
 //            sortingHandler.setDateFilter(new Date());
         else
             sortingHandler.setDateFilter(null);
+        onRefreshClick();
+    }
+
+    public void onHideUnmovedFilesChanged(ActionEvent event) {
+        sortingHandler.hideUnsortedFiles = cbHideUnmovedFiles.isSelected();
         onRefreshClick();
     }
 }
