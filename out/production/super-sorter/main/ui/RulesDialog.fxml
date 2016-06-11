@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane prefHeight="400.0" prefWidth="889.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView fx:id="tableView" editable="true" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colPrefix" prefWidth="100.0" text="Prefix" />
+          <TableColumn fx:id="colKeyword" prefWidth="150.0" text="Keyword" />
+          <TableColumn fx:id="colDateSubfolder" prefWidth="100.0" text="Date Subfolder" />
+          <TableColumn fx:id="colOutputFolder" text="Output Folder" />
+
+        </columns>
+      </TableView>
+   </center>
+    <bottom>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+          <Button mnemonicParsing="false" onAction="#onNewRuleClick" text="New Rule" />
+            <Button mnemonicParsing="false" onAction="#onDeleteRuleClick" text="Delete Rule" />
+            <Button mnemonicParsing="false" onAction="#onEditRuleClick" text="Edit Rule" />
+            <Button mnemonicParsing="false" onAction="#onCopyRuleClick" text="Duplicate Rule" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelClick" text="Cancel" />
+            </items>
+        </ToolBar>
+    </bottom>
+</BorderPane>

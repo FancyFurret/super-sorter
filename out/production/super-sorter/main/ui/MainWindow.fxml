@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane prefHeight="601.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.MainWindow">
+    <!--<fx:include source="EditRuleDialog.fxml" />-->
+    <!--<fx:include source="ProgressDialog.fxml" />-->
+    <!--<fx:include source="RulesDialog.fxml" />-->
+    <!--<fx:include source="SettingsDialog.fxml" />-->
+   <top>
+      <ToolBar prefHeight="40.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" onAction="#onRefreshClick" text="Refresh" />
+          <Button mnemonicParsing="false" onAction="#onSettingsClick" text="Settings" />
+          <Button mnemonicParsing="false" onAction="#onSetupRulesClick" text="Rules Editor" />
+          <Button mnemonicParsing="false" onAction="#onAboutClick" text="About" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <TableView fx:id="tableView" prefHeight="320.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colFile" prefWidth="200.0" text="File" />
+            <TableColumn fx:id="colLastModified" prefWidth="117.0" text="Last Modified" />
+          <TableColumn fx:id="colSortedDirectory" text="New Location" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <ToolBar prefHeight="40.0" BorderPane.alignment="CENTER">
+        <items>
+            <CheckBox fx:id="cbDateFilter" mnemonicParsing="false" onAction="#onDateFilterChanged" selected="true" text="Move if before:" />
+            <DatePicker fx:id="dpDateFilter" onAction="#onDateFilterChanged" />
+          <Pane HBox.hgrow="ALWAYS" />
+          <Button defaultButton="true" mnemonicParsing="false" onAction="#onMoveFilesClick" text="Move Files" />
+        </items>
+      </ToolBar>
+   </bottom>
+</BorderPane>
