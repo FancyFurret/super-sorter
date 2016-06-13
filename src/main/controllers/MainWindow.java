@@ -28,6 +28,7 @@ public class MainWindow implements Initializable {
     @FXML private CheckBox cbDateFilter;
     @FXML private DatePicker dpDateFilter;
     @FXML private CheckMenuItem cbHideUnmovedFiles;
+    @FXML private Button btnMoveFiles;
 
 
     public XmlHandler xmlHandler;
@@ -95,6 +96,7 @@ public class MainWindow implements Initializable {
 
     public void onRefreshClick() {
         sortingHandler.refresh();
+        btnMoveFiles.setText("Move " + sortingHandler.getMovedFiledCount() + " file(s)");
     }
 
     public void onSettingsClick() {

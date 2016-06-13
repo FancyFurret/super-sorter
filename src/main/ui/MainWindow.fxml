@@ -47,7 +47,7 @@
             <CheckBox fx:id="cbDateFilter" mnemonicParsing="false" onAction="#onDateFilterChanged" selected="true" text="Move if before:" />
             <DatePicker fx:id="dpDateFilter" onAction="#onDateFilterChanged" />
           <Pane HBox.hgrow="ALWAYS" />
-          <Button defaultButton="true" mnemonicParsing="false" onAction="#onMoveFilesClick" text="Move Files" />
+          <Button fx:id="btnMoveFiles" defaultButton="true" mnemonicParsing="false" onAction="#onMoveFilesClick" text="Move Files" />
         </items>
       </ToolBar>
    </bottom>

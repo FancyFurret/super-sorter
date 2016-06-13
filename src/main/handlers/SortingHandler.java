@@ -176,6 +176,8 @@ public class SortingHandler {
                         return matchedRule.getOutputFolder() + File.separator + year;
                 }
             }
+            else
+                return matchedRule.getOutputFolder();
         }
 
         return "";
