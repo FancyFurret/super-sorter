@@ -15,7 +15,7 @@ public class XmlHandler {
     private XmlData data;
     public XmlData getData() { return data; }
 
-    private String settingsPath = System.getProperty("user.dir") + "\\settings.xml";
+    private String settingsPath = System.getProperty("user.dir") + File.separator + "settings.xml";
 
     JAXBContext jaxbContext;
     Marshaller jaxbMarshaller;
@@ -26,6 +26,7 @@ public class XmlHandler {
 
     public XmlHandler() {
         _instance = this;
+        System.out.println(settingsPath);
 
         try {
             jaxbContext = JAXBContext.newInstance(XmlData.class);
