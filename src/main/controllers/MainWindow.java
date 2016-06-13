@@ -129,11 +129,15 @@ public class MainWindow implements Initializable {
     }
 
     public void onDateFilterChanged(){
-        if (cbDateFilter.isSelected() && dpDateFilter.getValue() != null)
+        if (cbDateFilter.isSelected() && dpDateFilter.getValue() != null) {
             sortingHandler.setDateFilter(Date.from(dpDateFilter.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 //            sortingHandler.setDateFilter(new Date());
-        else
+            dpDateFilter.setDisable(false);
+        }
+        else {
             sortingHandler.setDateFilter(null);
+            dpDateFilter.setDisable(true);
+        }
         onRefreshClick();
     }
 

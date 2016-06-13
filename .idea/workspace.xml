@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b23a3b9-0870-4701-883e-24b86aad0bc5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/handlers/XmlHandler.java" afterPath="$PROJECT_DIR$/src/main/handlers/XmlHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/controllers/MainWindow.java" afterPath="$PROJECT_DIR$/src/main/controllers/MainWindow.java" />
     </list>
     <ignored path="super-sorter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,6 +30,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/controllers/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RulesDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/controllers/RulesDialog.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -50,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XmlHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="XmlHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/handlers/XmlHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
@@ -86,13 +96,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/controllers/SettingsDialog.java" />
         <option value="$PROJECT_DIR$/src/main/controllers/ProgressDialog.java" />
-        <option value="$PROJECT_DIR$/src/main/controllers/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/other/Rule.java" />
         <option value="$PROJECT_DIR$/src/main/handlers/SortingHandler.java" />
         <option value="$PROJECT_DIR$/src/main/controllers/EditRuleDialog.java" />
         <option value="$PROJECT_DIR$/src/main/ui/RulesDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/controllers/RulesDialog.java" />
         <option value="$PROJECT_DIR$/src/main/handlers/XmlHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/controllers/MainWindow.java" />
       </list>
     </option>
   </component>
@@ -603,7 +613,14 @@
       <option name="project" value="LOCAL" />
       <updated>1465785969240</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed file separator for settings file">
+      <created>1465789349617</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1465789349617</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -650,7 +667,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hide unsorted files options" />
     <MESSAGE value="Ability to add suffix to date subfolders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ability to add suffix to date subfolders" />
+    <MESSAGE value="Fixed file separator for settings file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed file separator for settings file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -866,14 +884,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/controllers/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2232">
-          <caret line="141" column="25" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/controllers/RulesDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -902,6 +912,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/controllers/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
           <folding />
         </state>
       </provider>
