@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -91,6 +92,16 @@ public class RulesDialog extends Stage {
                         .subtract(colDateSubfolder.widthProperty())
                         .subtract(2)
         );
+
+        tableView.setRowFactory( table -> {
+            TableRow<Rule> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    editRule(row.getItem());
+                }
+            });
+            return row ;
+        });
     }
 
     private void editRule(Rule rule) {
