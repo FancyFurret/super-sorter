@@ -36,7 +36,7 @@
       <TableView fx:id="tableView" prefHeight="320.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colFile" prefWidth="200.0" text="File" />
-            <TableColumn fx:id="colLastModified" prefWidth="117.0" text="Last Modified" />
+            <TableColumn fx:id="colLastModified" prefWidth="175.0" text="Last Modified" />
           <TableColumn fx:id="colSortedDirectory" text="New Location" />
         </columns>
       </TableView>

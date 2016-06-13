@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<BorderPane prefHeight="400.0" prefWidth="889.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane prefHeight="400.0" prefWidth="889.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <TableView fx:id="tableView" editable="true" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colPrefix" prefWidth="100.0" text="Prefix" />
           <TableColumn fx:id="colKeyword" prefWidth="150.0" text="Keyword" />
-          <TableColumn fx:id="colDateSubfolder" prefWidth="100.0" text="Date Subfolder" />
-          <TableColumn fx:id="colOutputFolder" text="Output Folder" />
+          <TableColumn fx:id="colDateSubfolder" prefWidth="150.0" text="Date Subfolder" />
+          <TableColumn fx:id="colOutputFolder" minWidth="0.0" prefWidth="100.0" text="Output Folder" />
 
         </columns>
       </TableView>

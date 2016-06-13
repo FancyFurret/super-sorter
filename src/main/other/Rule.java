@@ -1,8 +1,6 @@
 package main.other;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by Forrest Jones on 6/7/2016.
@@ -30,11 +28,17 @@ public class Rule {
     @XmlElement ( name = "date_subfolder" )
     public void setDateSubfolder(boolean value) { dateSubfolder = value; }
 
+    private String dateSuffix;
+    public String getDateSuffix() { return dateSuffix; }
+    @XmlElement( name = "date_suffix" )
+    public void setDateSuffix(String value) { dateSuffix = value; }
+
     public Rule() {     }
-    public Rule(String prefix, String keyword, String outputFolder, boolean dateSubfolder) {
+    public Rule(String prefix, String keyword, String outputFolder, boolean dateSubfolder, String dateSuffix) {
         this.prefix = prefix;
         this.keyword = keyword;
         this.outputFolder = outputFolder;
         this.dateSubfolder = dateSubfolder;
+        this.dateSuffix = dateSuffix;
     }
 }

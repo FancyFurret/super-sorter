@@ -1,5 +1,6 @@
 package main.controllers;
 
+import com.sun.xml.internal.ws.util.xml.XMLReaderComposite;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ import main.other.Rule;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 /**
  * Created by Forrest Jones on 6/7/2016.
@@ -27,6 +27,7 @@ public class EditRuleDialog extends Stage {
     @FXML private TextField txtPrefix;
     @FXML private TextField txtKeyword;
     @FXML private TextField txtOutputFolder;
+    @FXML private TextField txtDateSuffix;
     @FXML private CheckBox cbDateSubfolder;
 
     public EditRuleDialog(Parent parent, Rule rule)
@@ -56,6 +57,9 @@ public class EditRuleDialog extends Stage {
             txtOutputFolder.setText(rule.getOutputFolder());
 
         cbDateSubfolder.setSelected(rule.getDateSubfolder());
+        onDateSubfolderChanged();
+        if (rule.getDateSuffix() != null)
+            txtDateSuffix.setText(rule.getDateSuffix());
     }
 
     @FXML
@@ -64,6 +68,12 @@ public class EditRuleDialog extends Stage {
         rule.setKeyword(txtKeyword.getText().toLowerCase());
         rule.setOutputFolder(txtOutputFolder.getText());
         rule.setDateSubfolder(cbDateSubfolder.isSelected());
+        if (cbDateSubfolder.isSelected())
+            rule.setDateSuffix(txtDateSuffix.getText());
+        else
+            rule.setDateSuffix("");
+
+
         close();
     }
     @FXML
@@ -74,10 +84,9 @@ public class EditRuleDialog extends Stage {
 
     public void onOutputFolderBrowse() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        if (txtOutputFolder.getText() != null && !txtOutputFolder.getText().isEmpty()) {
+        if (txtOutputFolder.getText() != null && !txtOutputFolder.getText().isEmpty() && new File(txtOutputFolder.getText()).exists())
             directoryChooser.setInitialDirectory(new File(txtOutputFolder.getText()));
-        }
-        else if (XmlHandler.getInstance().getData().getSortedDir() != null)
+        else if (XmlHandler.getInstance().getData().getSortedDir() != null && new File(XmlHandler.getInstance().getData().getSortedDir()).exists())
             directoryChooser.setInitialDirectory(new File(XmlHandler.getInstance().getData().getSortedDir()));
 
         File file = directoryChooser.showDialog(this);
@@ -85,5 +94,10 @@ public class EditRuleDialog extends Stage {
         if (!file.getPath().isEmpty()) {
             txtOutputFolder.setText(file.getPath());
         }
+    }
+
+    public void onDateSubfolderChanged() {
+        System.out.println("changed");
+        txtDateSuffix.setDisable(!cbDateSubfolder.isSelected());
     }
 }

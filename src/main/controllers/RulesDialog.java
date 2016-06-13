@@ -1,21 +1,20 @@
 package main.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import main.Main;
 import main.handlers.XmlHandler;
-import main.other.FileOperation;
 import main.other.Rule;
 import main.xmltemplates.XmlData;
 
@@ -61,6 +60,28 @@ public class RulesDialog extends Stage {
         colKeyword.setCellValueFactory(new PropertyValueFactory<Rule, String>("keyword"));
         colOutputFolder.setCellValueFactory(new PropertyValueFactory<Rule, String>("outputFolder"));
         colDateSubfolder.setCellValueFactory(new PropertyValueFactory<Rule, Boolean>("dateSubfolder"));
+
+        colDateSubfolder.setCellFactory(column -> new TableCell<Rule, Boolean>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (!empty) {
+                    if (item) {
+                        if (((Rule)getTableRow().getItem()) != null &&
+                                ((Rule)getTableRow().getItem()).getDateSuffix() != null &&
+                                !((Rule)getTableRow().getItem()).getDateSuffix().isEmpty())
+                            setText("YYYY " + ((Rule)getTableRow().getItem()).getDateSuffix());
+                        else
+                            setText("YYYY");
+                    }
+                    else
+                        setText("");
+                }
+            }
+        });
+
+
         tableView.setItems(observableRules);
 
         colOutputFolder.prefWidthProperty().bind(
@@ -99,7 +120,7 @@ public class RulesDialog extends Stage {
     @FXML
     void onCopyRuleClick() {
         Rule selectedRule = (Rule)tableView.getSelectionModel().getSelectedItem();
-        Rule rule = new Rule(selectedRule.getPrefix(), selectedRule.getKeyword(), selectedRule.getOutputFolder(), selectedRule.getDateSubfolder());
+        Rule rule = new Rule(selectedRule.getPrefix(), selectedRule.getKeyword(), selectedRule.getOutputFolder(), selectedRule.getDateSubfolder(), selectedRule.getDateSuffix());
         observableRules.add(rule);
         editRule(rule);
     }

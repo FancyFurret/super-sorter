@@ -11,7 +11,6 @@ import main.other.Rule;
 import main.xmltemplates.XmlData;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -86,9 +85,9 @@ public class SortingHandler {
                 int currentSuccess = 0;
                 for (FileOperation fileOperation : getFileList()) {
                     if (!fileOperation.getNewPath().isEmpty() && !fileOperation.isDisabled()) {
-                        File oldFile = new File(xmlData.getUnsortedDir() + "\\" + fileOperation.getPreviousPath());
-                        File newFile = new File(fileOperation.getNewPath() + "\\" + oldFile.getName());
-                        File newFilePath = new File(fileOperation.getNewPath() + "\\");
+                        File oldFile = new File(xmlData.getUnsortedDir() + File.separator + fileOperation.getPreviousPath());
+                        File newFile = new File(fileOperation.getNewPath() + File.separator + oldFile.getName());
+                        File newFilePath = new File(fileOperation.getNewPath() + File.separator);
                         if (!newFilePath.exists()) {
                             System.out.println("Path not found. Creating");
                             if (newFilePath.mkdirs())
@@ -103,8 +102,9 @@ public class SortingHandler {
                         try {
                             System.out.println("moving " + oldFile.toString() + " to " + newFile.toString());
                             Files.move(oldFile.toPath(), newFile.toPath());
+//                            Thread.sleep(500);
                             currentSuccess++;
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             currentErrors++;
                             e.printStackTrace();
                         }
@@ -165,25 +165,20 @@ public class SortingHandler {
             }
         }
 
-        String year = "";
         if (matchedRule != null) {
             if (matchedRule.getDateSubfolder()) {
                 Matcher m = yearPattern.matcher(fileName);
-                if (m.find())
-                    year = m.group().replaceAll("\\s", "");
-                else
-                    return "";
+                if (m.find()) {
+                    String year = m.group().replaceAll("\\s", "");
+                    if (matchedRule.getDateSuffix() != null && !matchedRule.getDateSuffix().isEmpty())
+                        return matchedRule.getOutputFolder() + File.separator + year + " " + matchedRule.getDateSuffix();
+                    else
+                        return matchedRule.getOutputFolder() + File.separator + year;
+                }
             }
         }
 
-        if (matchedRule != null) {
-            if (!year.isEmpty())
-                return matchedRule.getOutputFolder() + "\\" + year;
-            else
-                return matchedRule.getOutputFolder();
-        }
-        else
-            return "";
+        return "";
     }
 
     private ArrayList<String> getPrefixesSorted() {
