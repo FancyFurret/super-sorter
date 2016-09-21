@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="279.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="290.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
           <ColumnConstraints hgrow="ALWAYS" />
         </columnConstraints>
         <rowConstraints>
@@ -25,25 +25,26 @@
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="txtPrefix" GridPane.columnIndex="1">
+            <TextField fx:id="txtPrefix" promptText="File must start with prefix" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtKeyword" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="txtIncludedKeywords" promptText="File must include one of these comma-separated keywords" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label text="Prefix" GridPane.halignment="RIGHT" />
-            <Label text="Keyword" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <Label text="Output Folder" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <Label text="Date Subfolder" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-             <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" HBox.hgrow="ALWAYS">
+            <Label text="Include Keyword(s)" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <Label text="Output Folder" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <Label text="Date Subfolder" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+             <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3" HBox.hgrow="ALWAYS">
                  <children>
-                     <TextField fx:id="txtOutputFolder" editable="false" prefHeight="25.0" prefWidth="203.0" HBox.hgrow="ALWAYS">
+                     <TextField fx:id="txtOutputFolder" editable="false" prefHeight="25.0" prefWidth="203.0" promptText="Folder where the matched file will be placed" HBox.hgrow="ALWAYS">
                          <HBox.margin>
                              <Insets left="20.0" right="10.0" />
                          </HBox.margin>
@@ -54,14 +55,20 @@
                          </HBox.margin></Button>
                  </children>
              </HBox>
-            <CheckBox fx:id="cbDateSubfolder" mnemonicParsing="false" onAction="#onDateSubfolderChanged" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <CheckBox fx:id="cbDateSubfolder" mnemonicParsing="false" onAction="#onDateSubfolderChanged" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </CheckBox>
-            <TextField fx:id="txtDateSuffix" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="txtDateSuffix" disable="true" promptText="Optional, word to go after date in date subfolder" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="60.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Exclude Keyword(s)" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <TextField fx:id="txtExcludedKeywords" promptText="File cannot include any of these comma-separated keywords" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
 

@@ -97,6 +97,7 @@ public class MainWindow implements Initializable {
     public void onRefreshClick() {
         sortingHandler.refresh();
         btnMoveFiles.setText("Move " + sortingHandler.getMovedFiledCount() + " file(s)");
+        tableView.sort();
     }
 
     public void onSettingsClick() {

@@ -57,13 +57,16 @@ public class SortingHandler {
         fileList.clear();
         rules = xmlData.getRules();
 
-        for (File file : new File(xmlData.getUnsortedDir()).listFiles()) {
-            FileOperation o = new FileOperation(file.getName(), getDestination(file.getName()), new Date(file.lastModified()));
-            checkIfDisabled(o);
-            if (!hideUnsortedFiles || (hideUnsortedFiles && !o.isDisabled())) {
-                fileList.add(o);
+        try {
+            for (File file : new File(xmlData.getUnsortedDir()).listFiles()) {
+                FileOperation o = new FileOperation(file.getName(), getDestination(file.getName()), new Date(file.lastModified()));
+                checkIfDisabled(o);
+                if (!hideUnsortedFiles || (hideUnsortedFiles && !o.isDisabled())) {
+                    fileList.add(o);
+                }
             }
         }
+        catch (Exception e) {}
     }
 
     public void checkIfDisabled(FileOperation o) {
@@ -154,12 +157,22 @@ public class SortingHandler {
     private String getDestination(String fileName) {
         Rule matchedRule = null;
 
+        outerLoop:
         for (String prefix : getPrefixesSorted()) {
             if (fileName.toLowerCase().startsWith(prefix)) {
                 for (Rule rule : getRulesWithPrefix(prefix)) {
-                    if (fileName.toLowerCase().contains(rule.getKeyword().toLowerCase())) {
-                        matchedRule = rule;
-                        break;
+
+                    for (String includedKeyword : rule.getIncludedKeywords().split(",")) {
+                        if (fileName.toLowerCase().contains(includedKeyword.trim().toLowerCase())) {
+
+                            for (String excludedKeyword : rule.getExcludedKeywords().split(",")) {
+                                if (fileName.toLowerCase().contains(excludedKeyword.trim().toLowerCase()) && !excludedKeyword.isEmpty())
+
+                                    break outerLoop;
+                            }
+                            matchedRule = rule;
+                            break outerLoop;
+                        }
                     }
                 }
             }

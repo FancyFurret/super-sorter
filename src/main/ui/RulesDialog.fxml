@@ -13,7 +13,8 @@
       <TableView fx:id="tableView" editable="true" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colPrefix" prefWidth="100.0" text="Prefix" />
-          <TableColumn fx:id="colKeyword" prefWidth="150.0" text="Keyword" />
+          <TableColumn fx:id="colIncludedKeywords" prefWidth="125.0" text="Include(s)" />
+            <TableColumn fx:id="colExcludedKeywords" prefWidth="125.0" text="Exclude(s)" />
           <TableColumn fx:id="colDateSubfolder" prefWidth="150.0" text="Date Subfolder" />
           <TableColumn fx:id="colOutputFolder" minWidth="0.0" prefWidth="100.0" text="Output Folder" />
 

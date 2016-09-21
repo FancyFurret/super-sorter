@@ -1,6 +1,5 @@
 package main.controllers;
 
-import com.sun.xml.internal.ws.util.xml.XMLReaderComposite;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +24,8 @@ public class EditRuleDialog extends Stage {
     Rule rule;
 
     @FXML private TextField txtPrefix;
-    @FXML private TextField txtKeyword;
+    @FXML private TextField txtIncludedKeywords;
+    @FXML private TextField txtExcludedKeywords;
     @FXML private TextField txtOutputFolder;
     @FXML private TextField txtDateSuffix;
     @FXML private CheckBox cbDateSubfolder;
@@ -51,8 +51,10 @@ public class EditRuleDialog extends Stage {
 
         if (rule.getPrefix() != null)
             txtPrefix.setText(rule.getPrefix());
-        if (rule.getKeyword() != null)
-            txtKeyword.setText(rule.getKeyword());
+        if (rule.getIncludedKeywords() != null)
+            txtIncludedKeywords.setText(rule.getIncludedKeywords());
+        if (rule.getExcludedKeywords() != null)
+            txtExcludedKeywords.setText(rule.getExcludedKeywords());
         if (rule.getOutputFolder() != null)
             txtOutputFolder.setText(rule.getOutputFolder());
 
@@ -65,7 +67,8 @@ public class EditRuleDialog extends Stage {
     @FXML
     public void onSaveClick() {
         rule.setPrefix(txtPrefix.getText().toUpperCase());
-        rule.setKeyword(txtKeyword.getText().toLowerCase());
+        rule.setIncludedKeywords(txtIncludedKeywords.getText().toLowerCase());
+        rule.setExcludedKeywords(txtExcludedKeywords.getText().toLowerCase());
         rule.setOutputFolder(txtOutputFolder.getText());
         rule.setDateSubfolder(cbDateSubfolder.isSelected());
         if (cbDateSubfolder.isSelected())

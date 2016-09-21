@@ -13,10 +13,15 @@ public class Rule {
     @XmlElement( name = "prefix" )
     public void setPrefix(String value) { prefix = value; }
 
-    private String keyword;
-    public String getKeyword() { return keyword; }
-    @XmlElement( name = "keyword" )
-    public void setKeyword(String value) { keyword = value; }
+    private String includedKeywords;
+    public String getIncludedKeywords() { return includedKeywords; }
+    @XmlElement( name = "included_keywords" )
+    public void setIncludedKeywords(String value) { includedKeywords = value; }
+
+    private String excludedKeywords;
+    public String getExcludedKeywords() { return excludedKeywords; }
+    @XmlElement( name = "excluded_keywords" )
+    public void setExcludedKeywords(String value) { excludedKeywords = value; }
 
     private String outputFolder;
     public String getOutputFolder() { return outputFolder; }
@@ -34,9 +39,10 @@ public class Rule {
     public void setDateSuffix(String value) { dateSuffix = value; }
 
     public Rule() {     }
-    public Rule(String prefix, String keyword, String outputFolder, boolean dateSubfolder, String dateSuffix) {
+    public Rule(String prefix, String includedKeywords, String excludedKeywords, String outputFolder, boolean dateSubfolder, String dateSuffix) {
         this.prefix = prefix;
-        this.keyword = keyword;
+        this.includedKeywords = includedKeywords;
+        this.excludedKeywords = excludedKeywords;
         this.outputFolder = outputFolder;
         this.dateSubfolder = dateSubfolder;
         this.dateSuffix = dateSuffix;

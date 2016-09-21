@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import main.Main;
 import main.handlers.XmlHandler;
 import main.other.Rule;
@@ -30,7 +29,8 @@ public class RulesDialog extends Stage {
 
     @FXML TableView tableView;
     @FXML TableColumn colPrefix;
-    @FXML TableColumn colKeyword;
+    @FXML TableColumn colIncludedKeywords;
+    @FXML TableColumn colExcludedKeywords;
     @FXML TableColumn colOutputFolder;
     @FXML TableColumn colDateSubfolder;
 
@@ -58,7 +58,8 @@ public class RulesDialog extends Stage {
         if (xmlData.getRules() != null)
             observableRules.setAll(xmlData.getRules());
         colPrefix.setCellValueFactory(new PropertyValueFactory<Rule, String>("prefix"));
-        colKeyword.setCellValueFactory(new PropertyValueFactory<Rule, String>("keyword"));
+        colIncludedKeywords.setCellValueFactory(new PropertyValueFactory<Rule, String>("includedKeywords"));
+        colExcludedKeywords.setCellValueFactory(new PropertyValueFactory<Rule, String>("excludedKeywords"));
         colOutputFolder.setCellValueFactory(new PropertyValueFactory<Rule, String>("outputFolder"));
         colDateSubfolder.setCellValueFactory(new PropertyValueFactory<Rule, Boolean>("dateSubfolder"));
 
@@ -88,7 +89,8 @@ public class RulesDialog extends Stage {
         colOutputFolder.prefWidthProperty().bind(
                 tableView.widthProperty()
                         .subtract(colPrefix.widthProperty())
-                        .subtract(colKeyword.widthProperty())
+                        .subtract(colIncludedKeywords.widthProperty())
+                        .subtract(colExcludedKeywords.widthProperty())
                         .subtract(colDateSubfolder.widthProperty())
                         .subtract(2)
         );
@@ -108,7 +110,8 @@ public class RulesDialog extends Stage {
         EditRuleDialog editRuleDialog = new EditRuleDialog(null, rule);
         editRuleDialog.showAndWait();
         if (rule.getPrefix() == null || rule.getPrefix().isEmpty()  ||
-                rule.getKeyword() == null || rule.getKeyword().isEmpty() ||
+                rule.getIncludedKeywords() == null || rule.getIncludedKeywords().isEmpty() ||
+                rule.getExcludedKeywords() == null ||
                 rule.getOutputFolder() == null || rule.getOutputFolder().isEmpty())
             observableRules.remove(rule);
 
@@ -131,7 +134,7 @@ public class RulesDialog extends Stage {
     @FXML
     void onCopyRuleClick() {
         Rule selectedRule = (Rule)tableView.getSelectionModel().getSelectedItem();
-        Rule rule = new Rule(selectedRule.getPrefix(), selectedRule.getKeyword(), selectedRule.getOutputFolder(), selectedRule.getDateSubfolder(), selectedRule.getDateSuffix());
+        Rule rule = new Rule(selectedRule.getPrefix(), selectedRule.getIncludedKeywords(), selectedRule.getExcludedKeywords(), selectedRule.getOutputFolder(), selectedRule.getDateSubfolder(), selectedRule.getDateSuffix());
         observableRules.add(rule);
         editRule(rule);
     }
