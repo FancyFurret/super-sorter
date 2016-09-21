@@ -38,8 +38,14 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
+             <TextField fx:id="txtExcludedKeywords" promptText="File cannot include any of these comma-separated keywords" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                 <GridPane.margin>
+                     <Insets left="20.0" right="20.0" />
+                 </GridPane.margin>
+             </TextField>
             <Label text="Prefix" GridPane.halignment="RIGHT" />
             <Label text="Include Keyword(s)" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+             <Label text="Exclude Keyword(s)" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
             <Label text="Output Folder" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Label text="Date Subfolder" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3" HBox.hgrow="ALWAYS">
@@ -65,12 +71,8 @@
                   <Insets left="60.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Exclude Keyword(s)" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <TextField fx:id="txtExcludedKeywords" promptText="File cannot include any of these comma-separated keywords" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="20.0" right="20.0" />
-               </GridPane.margin>
-            </TextField>
+
+
 
          </children>
       </GridPane>

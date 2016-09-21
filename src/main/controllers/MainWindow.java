@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.handlers.Constants;
 import main.handlers.SortingHandler;
 import main.handlers.XmlHandler;
 import main.other.FileOperation;
@@ -127,7 +128,7 @@ public class MainWindow implements Initializable {
     public void onAboutClick() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "© Forrest Jones 2016", ButtonType.OK);
         alert.setTitle("About");
-        alert.setHeaderText("Super Sorter");
+        alert.setHeaderText("Super Sorter\nVersion " + Constants.VERSION);
         alert.showAndWait();
     }
 

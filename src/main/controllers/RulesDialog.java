@@ -1,5 +1,6 @@
 package main.controllers;
 
+import com.sun.javafx.scene.control.skin.TableViewSkinBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -116,7 +117,9 @@ public class RulesDialog extends Stage {
             observableRules.remove(rule);
 
         sortByPrefix();
-        tableView.refresh();
+
+        tableView.getColumns().clear();
+        tableView.getColumns().addAll(colPrefix, colIncludedKeywords, colExcludedKeywords, colDateSubfolder, colOutputFolder);
     }
 
     @FXML
